@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://1klc88s7mxil"]
+
+[ext_resource type="Script" uid="uid://bmryqdroeoiji" path="res://Scenes/minigame_1.gd" id="1_0uv5o"]
+[ext_resource type="Texture2D" uid="uid://bpv03ihey105u" path="res://kenney_new-platformer-pack-1.1/Vector/Backgrounds/background_solid_sky.svg" id="1_f6tb2"]
+[ext_resource type="Texture2D" uid="uid://cgfn4lppalgan" path="res://kenney_new-platformer-pack-1.1/Vector/Tiles/terrain_grass_block_top.svg" id="2_o6yob"]
+[ext_resource type="Texture2D" uid="uid://b3h0d1ic65a3e" path="res://kenney_new-platformer-pack-1.1/Vector/Tiles/block_plank.svg" id="3_0uv5o"]
+[ext_resource type="PackedScene" uid="uid://x37ogllew5qs" path="res://Scenes/player.tscn" id="3_5txvl"]
+[ext_resource type="Script" uid="uid://dyfmse4je84i4" path="res://bomb.gd" id="5_jmcek"]
+[ext_resource type="Texture2D" uid="uid://5l7yv2jrvuef" path="res://kenney_new-platformer-pack-1.1/Vector/Tiles/bomb.svg" id="5_ojqsy"]
+[ext_resource type="PackedScene" uid="uid://i77ep47a40pf" path="res://Scenes/ThemedTimer.tscn" id="7_ojqsy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7jn1"]
+size = Vector2(1152, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmcek"]
+size = Vector2(65, 64)
+
+[sub_resource type="Animation" id="Animation_ne1wf"]
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(321.18, -66.705), Vector2(321.18, -71.86)]
+}
+
+[sub_resource type="Animation" id="Animation_qytqt"]
+resource_name = "floating"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5.155)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vj06g"]
+_data = {
+&"RESET": SubResource("Animation_ne1wf"),
+&"floating": SubResource("Animation_qytqt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca4yy"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojqsy"]
+size = Vector2(64, 64)
+
+[node name="minigame_1" type="Node2D" unique_id=1419550685]
+script = ExtResource("1_0uv5o")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2110945500]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(100, 0)
+
+[node name="Background" type="TextureRect" parent="Parallax2D" unique_id=1037382110]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_f6tb2")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=272082713]
+
+[node name="TextureRect" type="TextureRect" parent="Ground" unique_id=1362374381]
+texture_filter = 1
+texture_repeat = 2
+offset_top = 608.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_o6yob")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1675431686]
+position = Vector2(576, 630)
+shape = SubResource("RectangleShape2D_p7jn1")
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1003863748]
+
+[node name="TextureRect" type="TextureRect" parent="Platform2" unique_id=799718607]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 192.0
+offset_top = 544.0
+offset_right = 257.0
+offset_bottom = 608.0
+texture = ExtResource("3_0uv5o")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1320252935]
+position = Vector2(224, 576)
+shape = SubResource("RectangleShape2D_jmcek")
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=1186772414]
+position = Vector2(192.05, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Platform3" unique_id=735981383]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 192.0
+offset_top = 544.0
+offset_right = 257.0
+offset_bottom = 608.0
+texture = ExtResource("3_0uv5o")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1872592848]
+position = Vector2(224, 576)
+shape = SubResource("RectangleShape2D_jmcek")
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1169506364]
+position = Vector2(254.025, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Platform4" unique_id=177395635]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 192.0
+offset_top = 544.0
+offset_right = 257.0
+offset_bottom = 608.0
+texture = ExtResource("3_0uv5o")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=1963051347]
+position = Vector2(224, 576)
+shape = SubResource("RectangleShape2D_jmcek")
+
+[node name="Platform5" type="StaticBody2D" parent="." unique_id=1797482063]
+position = Vector2(254.025, -63.87)
+
+[node name="TextureRect" type="TextureRect" parent="Platform5" unique_id=928912068]
+texture_filter = 1
+texture_repeat = 2
+offset_left = 192.0
+offset_top = 544.0
+offset_right = 257.0
+offset_bottom = 608.0
+texture = ExtResource("3_0uv5o")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=1074835170]
+position = Vector2(224, 576)
+shape = SubResource("RectangleShape2D_jmcek")
+
+[node name="Bomb" type="Node2D" parent="." unique_id=124210330]
+position = Vector2(0, -2.932157)
+script = ExtResource("5_jmcek")
+
+[node name="Bomb" type="TextureRect" parent="Bomb" unique_id=1062968324]
+offset_left = 192.0
+offset_top = 392.0
+offset_right = 256.0
+offset_bottom = 456.0
+texture = ExtResource("5_ojqsy")
+
+[node name="animation" type="AnimationPlayer" parent="Bomb" unique_id=554206701]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_vj06g")
+
+[node name="Area2D" type="Area2D" parent="Bomb" unique_id=366547099]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb/Area2D" unique_id=2123985559]
+position = Vector2(224, 426.93216)
+shape = SubResource("RectangleShape2D_ca4yy")
+
+[node name="Bomb2" type="Node2D" parent="." unique_id=1218703498]
+position = Vector2(321.18, -66.705)
+script = ExtResource("5_jmcek")
+
+[node name="Bomb" type="TextureRect" parent="Bomb2" unique_id=1731277600]
+offset_left = 192.0
+offset_top = 392.0
+offset_right = 256.0
+offset_bottom = 456.0
+texture = ExtResource("5_ojqsy")
+
+[node name="animation" type="AnimationPlayer" parent="Bomb2" unique_id=1543611804]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_vj06g")
+
+[node name="Area2D" type="Area2D" parent="Bomb2" unique_id=1574623671]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb2/Area2D" unique_id=88832540]
+position = Vector2(224, 424)
+shape = SubResource("RectangleShape2D_ojqsy")
+
+[node name="Player" parent="." unique_id=762497511 instance=ExtResource("3_5txvl")]
+position = Vector2(64, 568)
+
+[node name="ThemedTimer" parent="." unique_id=41061144 instance=ExtResource("7_ojqsy")]

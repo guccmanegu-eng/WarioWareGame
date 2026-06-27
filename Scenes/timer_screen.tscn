@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cfcwfs3n2sg2j"]
+
+[ext_resource type="Script" uid="uid://cc4ospanujoxy" path="res://Scenes/timer_screen.gd" id="1_c7xwe"]
+[ext_resource type="Texture2D" uid="uid://d2xnf7bo1ukbm" path="res://kenney_new-platformer-pack-1.1/Vector/Backgrounds/background_solid_sand.svg" id="2_2fcgv"]
+[ext_resource type="Texture2D" uid="uid://63cwbt14ptya" path="res://kenney_new-platformer-pack-1.1/Vector/Tiles/star.svg" id="3_qnqh0"]
+
+[node name="level_scene" type="Node2D" unique_id=757615951]
+script = ExtResource("1_c7xwe")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2083498300]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_2fcgv")
+
+[node name="StarContainer" type="HBoxContainer" parent="." unique_id=1708701519]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 344.0
+offset_bottom = 72.0
+
+[node name="Star" type="TextureRect" parent="StarContainer" unique_id=556450825]
+layout_mode = 2
+texture = ExtResource("3_qnqh0")
+
+[node name="Star2" type="TextureRect" parent="StarContainer" unique_id=1538782995]
+layout_mode = 2
+texture = ExtResource("3_qnqh0")
+
+[node name="Star3" type="TextureRect" parent="StarContainer" unique_id=1418844537]
+layout_mode = 2
+texture = ExtResource("3_qnqh0")
+
+[node name="Star4" type="TextureRect" parent="StarContainer" unique_id=1400299890]
+layout_mode = 2
+texture = ExtResource("3_qnqh0")
+
+[node name="Star5" type="TextureRect" parent="StarContainer" unique_id=243671025]
+layout_mode = 2
+texture = ExtResource("3_qnqh0")
+
+[node name="Level" type="RichTextLabel" parent="." unique_id=1755687718]
+offset_left = 984.0
+offset_top = 584.0
+offset_right = 1192.0
+offset_bottom = 664.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 42
+text = "Level #"
+
+[node name="Timer" type="RichTextLabel" parent="." unique_id=1039651824]
+offset_left = 1088.0
+offset_top = 8.0
+offset_right = 1152.0
+offset_bottom = 72.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 42
+text = "0.0"
